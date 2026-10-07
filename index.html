@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f2f8f6">
+<title>Genesis Ideathon Teams</title>
+<link rel="icon" href="img/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Figtree:wght@400;500;600;700&family=Martian+Mono:wght@400;500&display=swap">
+<style>
+/* Genesis theme: stained-glass light-bulb palette on a bright mint ground. */
+:root{
+  --bg:#f2f8f6; --bg-tint:#e6f3ee; --surface:#ffffff; --surface-2:#f5faf8; --surface-3:#e8f2ee;
+  --line:#d3e4de; --line-soft:#e5efeb;
+  --text:#0f2e2e; --muted:#4d6866; --faint:#7b9592;
+  --brand-ink:#103030; --petrol:#005060; --ocean:#0070a0; --teal:#0b7a70; --teal-logo:#20a090;
+  --cyan:#00d9ea; --mint:#6fd18f; --mint-deep:#3fb77a;
+  --stripe:linear-gradient(90deg,#103030 0 18%,#005060 18% 36%,#0070a0 36% 54%,#20a090 54% 72%,#00d9ea 72% 86%,#6fd18f 86% 100%);
+  --f-display:'Big Shoulders Display','Arial Narrow',Impact,sans-serif;
+  --f-body:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-mono:'Martian Mono',ui-monospace,'Cascadia Mono',Consolas,monospace;
+  --radius:14px; --shadow-sm:0 1px 2px rgb(16 48 48 / .06);
+  --shadow:0 1px 2px rgb(16 48 48 / .05),0 10px 28px -14px rgb(16 48 48 / .18);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:400 15px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(60% 45% at 100% 0%,rgb(0 217 234 / .10),transparent 70%),
+             radial-gradient(55% 45% at 0% 100%,rgb(111 209 143 / .14),transparent 70%)}
+::selection{background:rgb(0 217 234 / .28)}
+:focus-visible{outline:2px solid var(--ocean);outline-offset:2px;border-radius:6px}
+img{display:block;max-width:100%}
+.wrap{max-width:1140px;margin:0 auto;padding-inline:16px}
+.stripe{height:5px;background:var(--stripe)}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+  background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.masthead{padding-block:14px;display:flex;flex-direction:column;gap:14px}
+.lockup{display:flex;align-items:center;gap:13px}
+.lockup img{width:42px;height:auto;filter:drop-shadow(0 4px 10px rgb(16 48 48 / .18))}
+.wordmark{display:flex;flex-direction:column;line-height:1}
+.wordmark .g{font-family:var(--f-display);font-weight:800;text-transform:uppercase;letter-spacing:.015em;
+  font-size:clamp(26px,5vw,36px);color:var(--brand-ink)}
+.wordmark .s{font-family:var(--f-mono);font-weight:500;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--teal);margin-top:5px}
+.sub{color:var(--muted);font-size:13.5px;max-width:64ch}
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.search{flex:1 1 260px;min-width:0;position:relative}
+.search input{width:100%;font:400 15px var(--f-body);color:var(--text);background:var(--surface);
+  border:1px solid var(--line);border-radius:10px;padding:11px 12px 11px 40px;outline:none}
+.search input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgb(11 122 112 / .16)}
+.search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--faint)}
+.countline{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap}
+.countline b{color:var(--text);font-weight:500}
+main{padding-block:22px 52px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(324px,1fr));gap:15px}
+.card{position:relative;background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:17px 18px;display:flex;flex-direction:column;gap:13px;overflow:hidden}
+.card::before{content:'';position:absolute;inset:0 auto 0 0;width:4px;background:linear-gradient(var(--teal),var(--cyan) 60%,var(--mint))}
+.card-top{display:flex;align-items:center;gap:10px;padding-left:6px}
+.tid{font-family:var(--f-mono);font-weight:500;font-size:13px;color:var(--teal);letter-spacing:-.01em;
+  background:var(--surface-3);padding:5px 10px;border-radius:7px}
+.team-name{font-family:var(--f-display);font-weight:800;text-transform:uppercase;letter-spacing:.01em;
+  font-size:22px;line-height:.98;color:var(--brand-ink);padding-left:6px;text-wrap:balance;min-width:0;word-break:break-word}
+.roster{display:flex;flex-direction:column;border-top:1px solid var(--line-soft);margin-left:6px}
+.person{display:flex;align-items:baseline;gap:11px;padding:8px 0;border-bottom:1px solid var(--line-soft)}
+.person:last-child{border-bottom:none}
+.role{font-family:var(--f-mono);font-size:9px;letter-spacing:.05em;text-transform:uppercase;color:var(--faint);width:28px;flex:none}
+.person.lead .role{color:var(--teal)}
+.pinfo{min-width:0;flex:1}
+.pname{font-size:14px;font-weight:600;line-height:1.3;color:var(--text);word-break:break-word}
+.proll{font-family:var(--f-mono);font-size:11px;color:var(--muted);word-break:break-all;margin-top:2px}
+.state{grid-column:1/-1;text-align:center;padding:64px 16px;color:var(--muted)}
+.state b{display:block;font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:22px;color:var(--brand-ink);margin-bottom:6px}
+.state button{margin-top:14px;font:600 14px var(--f-body);color:#fff;background:var(--teal);border:none;border-radius:9px;padding:9px 18px;cursor:pointer}
+.skel{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);height:168px;
+  box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+.skel::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgb(255 255 255 / .6),transparent);
+  transform:translateX(-100%);animation:sh 1.3s infinite}
+@keyframes sh{to{transform:translateX(100%)}}
+@media (prefers-reduced-motion:reduce){.skel::after{animation:none}}
+mark{background:rgb(0 217 234 / .3);color:var(--brand-ink);border-radius:3px;padding:0 1px}
+footer{color:var(--faint);font-size:12px;text-align:center;padding-block:4px 30px;font-family:var(--f-mono);letter-spacing:.02em}
+</style>
+</head>
+<body>
+<div class="stripe"></div>
+<header class="top">
+  <div class="wrap masthead">
+    <div class="lockup">
+      <img src="img/logo.png" alt="Genesis logo" width="44">
+      <div class="wordmark"><span class="g">Genesis</span><span class="s">Ideathon '26 &bull; Teams</span></div>
+    </div>
+    <div class="sub">Find your team by ID, name, member or roll number. Amrita Vishwa Vidyapeetham, Coimbatore.</div>
+    <div class="controls">
+      <label class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg>
+        <input id="q" type="search" placeholder="Search team, name, roll, or ID&hellip;" autocomplete="off" aria-label="Search teams">
+      </label>
+    </div>
+    <div class="countline"><span>Showing <b id="shown">&mdash;</b> of <b id="total">&mdash;</b> teams</span></div>
+  </div>
+</header>
+<main class="wrap"><div class="grid" id="grid"></div></main>
+<footer class="wrap">Genesis Ideathon 2026 &bull; Team IDs are final &bull; format GEN26-A0H-I###</footer>
+
+<script>
+const SUPA_URL = "https://ogogexuinuynaglkxeeh.supabase.co";
+const SUPA_KEY = "sb_publishable_SjHkW_JyEnmsO-TACgJF0w_X1X3wLNA";
+const grid=document.getElementById('grid'), q=document.getElementById('q');
+let TEAMS=[];
+
+function esc(s){return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function hi(s,t){ s=esc(s); if(!t) return s;
+  const i=s.toLowerCase().indexOf(t.toLowerCase()); if(i<0) return s;
+  return s.slice(0,i)+'<mark>'+s.slice(i,i+t.length)+'</mark>'+s.slice(i+t.length);
+}
+function toTeam(r){
+  const members=[];
+  for(const n of [1,2,3]){ const nm=r['m'+n+'_name'], rl=r['m'+n+'_roll'];
+    if((nm&&nm.trim())||(rl&&rl.trim())) members.push({name:nm||'',roll:rl||''}); }
+  return {id:r.team_id, team:r.team_name, tl:r.tl_name, tl_roll:r.tl_roll, members};
+}
+function matches(tm,t){ if(!t) return true;
+  return [tm.id,tm.team,tm.tl,tm.tl_roll,...tm.members.flatMap(m=>[m.name,m.roll])].join(' ').toLowerCase().includes(t);
+}
+function personRow(role,name,roll,lead,t){
+  return `<div class="person${lead?' lead':''}"><div class="role">${role}</div>`+
+    `<div class="pinfo"><div class="pname">${hi(name,t)}</div>`+
+    (roll?`<div class="proll">${hi(roll,t)}</div>`:'')+`</div></div>`;
+}
+function card(tm,t){
+  let rows=personRow('TL',tm.tl||'',tm.tl_roll,true,t);
+  tm.members.forEach((m,i)=>rows+=personRow('M'+(i+1),m.name,m.roll,false,t));
+  return `<article class="card"><div class="card-top"><span class="tid">${hi(tm.id,t)}</span></div>`+
+    `<h2 class="team-name">${hi(tm.team||'(unnamed)',t)}</h2>`+
+    `<div class="roster">${rows}</div></article>`;
+}
+function render(){
+  const t=q.value.trim().toLowerCase();
+  const list=TEAMS.filter(tm=>matches(tm,t));
+  grid.innerHTML = list.length ? list.map(tm=>card(tm,t)).join('')
+    : `<div class="state"><b>No teams found</b>Try a different name, roll number or team ID.</div>`;
+  document.getElementById('shown').textContent=list.length;
+}
+function skeletons(){ grid.innerHTML = Array.from({length:8},()=>'<div class="skel"></div>').join(''); }
+function errorState(msg){ grid.innerHTML =
+  `<div class="state"><b>Couldn't load teams</b>${esc(msg||'')}<br><button onclick="load()">Retry</button></div>`; }
+
+async function load(){
+  skeletons();
+  try{
+    const res = await fetch(`${SUPA_URL}/rest/v1/ideathon_teams?select=*&order=team_id.asc`,
+      {headers:{apikey:SUPA_KEY, Authorization:'Bearer '+SUPA_KEY}});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const rows = await res.json();
+    TEAMS = rows.map(toTeam);
+    document.getElementById('total').textContent=TEAMS.length;
+    render();
+  }catch(e){ errorState('Please check your connection and try again.'); }
+}
+q.addEventListener('input',render);
+load();
+</script>
+</body>
+</html>
