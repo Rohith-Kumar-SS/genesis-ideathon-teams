@@ -1,6 +1,7 @@
 -- Genesis Ideathon 2026 - Team directory table + seed.
 -- Run this in the Supabase SQL editor (project ogogexuinuynaglkxeeh).
--- Safe to re-run: table create is idempotent and the seed upserts by team_id.
+-- Run it ONCE. Re-running resets every seeded team to the original registration data,
+-- which overwrites any edits made later in the Table Editor.
 
 create table if not exists public.ideathon_teams (
   team_id    text primary key,
